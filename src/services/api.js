@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // update to your deployed URL later
+  baseURL: import.meta.env.VITE_API_URL + "/api",
 });
 
-// Add token to every request
+// 🔐 Add token to every request if present
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
   if (token) {
